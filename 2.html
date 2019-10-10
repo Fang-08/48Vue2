@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue2.6.10.js"></script>
+    <style type="text/css">
+        button{border: 1px red solid;width: 100px; height: 35px;}
+        .a{ background-color: #ffffff; }
+        .b{background-color: red;}
+    </style>
+</head>
+<body>
+<div id="demo1">
+    <demo-button></demo-button>
+</div>
+</body>
+<script>
+    var DemoButton={
+        template:`<button @mouseover="b()" @mouseleave="leave()" @click="a()" :class="style"  >{{content}}</button>`,
+        data:function(){
+            return{
+                content:'你好',
+                style:'a'
+            }
+        },
+        methods:{
+            a:function(){
+                alert(this.content)
+            },
+            b:function () {
+                this.style='b';
+            },
+            leave:function () {
+                this.style='a';
+            }
+        }
+    };
+    new Vue({
+        el:'#demo1',
+        components:{
+            'demo-button':DemoButton
+        }
+    })
+</script>
+</html>
